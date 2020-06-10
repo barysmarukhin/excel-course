@@ -10,16 +10,14 @@ export class DomListener {
   }
 
   initDOMListeners() {
-    console.log(this.listeners);
     this.listeners.forEach((listener) => {
-      const methodName = this.getMethodName(listener);
-      const method = this[methodName];
-      if (!method) {
+      const method = this.getMethodName(listener);
+      if (!this[method]) {
         // eslint-disable-next-line max-len
-        throw new Error(`Method ${methodName} wasn't implemented in ${this.name} Component`)
+        throw new Error(`Method ${method} wasn't implemented in ${this.name} Component`)
       }
-
-      this.$root.on(listener, method)
+      this[method] = this[method].bind(this);
+      this.$root.on(listener, this[method])
     })
   }
 

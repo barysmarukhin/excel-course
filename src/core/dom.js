@@ -13,14 +13,40 @@ class Dom {
 
     return this.$el.outerHTML.trim();
   }
+  get data() {
+    return this.$el.dataset
+  }
+  closest(selector) {
+    return $(this.$el.closest(selector))
+  }
+  getCoords() {
+    return this.$el.getBoundingClientRect()
+  }
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
   on(eventType, callback) {
     this.$el.addEventListener(eventType, callback)
   }
   off(eventType, callback) {
     this.$el.removeEventListener(eventType, callback)
   }
+
+  /*
+   * {
+   *   height: '20px',
+   *   width: '302px',
+   *   margin: '20px',
+   * }
+   */
+  css(styles = {}) {
+    Object.keys(styles)
+      .forEach((key) =>{
+        this.$el.style[key] = styles[key];
+      });
+  }
   clear() {
-    this.html('')
+    this.html('');
 
     return this;
   }

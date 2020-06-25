@@ -21,21 +21,21 @@ export function matrix($target, $current) {
 }
 
 export function nextSelector(key, {col, row}) {
-  const MIN_VALUE = 0;
+  const MIN_VALUE = 0
   switch (key) {
   case 'Enter':
   case 'ArrowDown':
-    row++;
+    row++
     break
-  case 'ArrowRight':
   case 'Tab':
+  case 'ArrowRight':
     col++
     break
   case 'ArrowLeft':
-    col = Math.max(MIN_VALUE, --col)
+    col = col - 1 < MIN_VALUE ? MIN_VALUE : col - 1
     break
   case 'ArrowUp':
-    row = Math.max(MIN_VALUE, --row)
+    row = row - 1 < MIN_VALUE ? MIN_VALUE : row - 1
     break
   }
 

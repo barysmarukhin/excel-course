@@ -35,7 +35,6 @@ export function nextSelector(key, {col, row}) {
     col = Math.max(MIN_VALUE, --col)
     break
   case 'ArrowUp':
-    console.log(row);
     row = Math.max(MIN_VALUE, --row)
     break
   }
